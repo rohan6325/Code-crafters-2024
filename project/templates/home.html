@@ -1,7 +1,9 @@
 {% extends 'index.html' %}
 {% block body %}
+
 {% for posts in posts %}
-<div class="card" style="width: 18rem;">
+<div class="c" style="display:flex; align-items:center;justify-content: center; align-items:center; margin-bottom: 2.5%;">
+<div class="card" style="width: 50rem; display:flex;">
   <div class="card-body">
     <h5 class="card-title">{{posts.title}}</h5>
     <h6 class="card-subtitle mb-2 text-body-secondary">By author {{posts.author}}</h6>
@@ -9,6 +11,7 @@
     <a href="#" class="card-link">{{posts.date}}</a>
     <a href="#" class="card-link">Another link</a>
   </div>
+</div>
 </div>
 {% endfor %}
 {% endblock body %}
