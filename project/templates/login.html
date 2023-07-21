@@ -11,9 +11,9 @@ register
             <legend class="border-bottom mb-4">Join today</legend>
         {{form.as_p}}
     </fieldset>
-        <button class="btn btn-outline-info" type="submit" style="align-self: center;">Sign up</button>
+        <button class="btn btn-outline-info" type="submit" style="align-self: center;">Login</button>
    <div class="border-top pt-3">
-    <small class="text-muted">Already have an account?<a href="{%url 'login'%}">log-in</a></small>
+    <small class="text-muted">Need an account?<a href="{% url 'register' %}">Sign-up</a></small>
    </div>
     </form>
 </div>
