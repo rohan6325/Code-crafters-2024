@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% block title %}
+register
+{% endblock title %}
+{% block body %}
+<div>
+    <form method="POST">
+        {%csrf_token%}
+        {{form}}
+        <button type="submit">Sign up</button>
+    </form>
+</div>
+{% endblock body %}
