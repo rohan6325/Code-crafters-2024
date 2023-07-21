@@ -1,13 +1,20 @@
 {% extends 'index.html' %}
+
 {% block title %}
 register
 {% endblock title %}
 {% block body %}
-<div>
-    <form method="POST">
+<div class="content-section border-1 " style="display: flex; justify-content: center; border: 2px; border-color: black;">
+    <form method="POST" style="border: 1px;border: double; padding: 2px; border-radius: 12px; margin-top: 2%;">
         {%csrf_token%}
-        {{form}}
-        <button type="submit">Sign up</button>
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Join today</legend>
+        {{form.as_p}}
+    </fieldset>
+        <button class="btn btn-outline-info" type="submit" style="align-self: center;">Sign up</button>
+   <div class="border-top pt-3">
+    <small class="text-muted">Already have an account?</small>
+   </div>
     </form>
 </div>
 {% endblock body %}
