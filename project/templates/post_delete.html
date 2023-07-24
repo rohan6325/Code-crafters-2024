@@ -1,17 +1,18 @@
 {% extends 'index.html' %}
 
 {% block title %}
-Update Post
+Create Post
 {% endblock title %}
 {% block body %}
 <div class="content-section border-1 " style="display: flex; justify-content: center; border: 2px; border-color: black;">
     <form method="POST" style="border: 1px;border: double; padding: 2px; border-radius: 12px; margin-top: 2%;">
         {%csrf_token%}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Update your Post</legend>
+            <legend class="border-bottom mb-4">Are you sure you want to Delete your post?{object.title}</legend>
         {{form.as_p}}
     </fieldset>
-        <button class="btn btn-outline-info" type="submit" style="align-self: center;">Update</button>
+        <button class="btn btn-outline-danger" type="submit" style="align-self: center;">Yes,Delete</button>
+        <button class="btn btn-outline-success"style="align-self: center;"> <a  href="{%url 'post-detail' object.id%}">No,Abort</a></button>
    
     </form>
 </div>
