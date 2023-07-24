@@ -2,18 +2,19 @@
 {% block body %}
 
 {% for posts in posts %}
-
-<div class="c" style="display:flex; align-items:center;justify-content: center; align-items:center; margin: 2.5%;">
+<div style="display: flex;flex-direction: column;">
+<div class="c" style="display:flex; ;align-items:center;justify-content: center; align-items:center; margin: 2.5%;">
 <div class="card" style="width: 50rem; display:flex;">
   <div class="card-body" style="display:flex">
     <img class="rounded-circle img-thumbnail" style="height:64px; width:64px"src="{{posts.author.profile.image.url}}">
     <div style="display: flex; flex-direction: column; margin-left: 2%;">
-    <h5 class="card-title">{{posts.title}}</h5>
+    <h5 class="card-title"><a style="text-decoration: none;" href="{%url 'post-detail' posts.id %}">{{posts.title}}</a></h5>
     <h6 class="card-subtitle mb-2 text-body-secondary">By author {{posts.author}}</h6>
     <p class="card-text">{{posts.content}}</p>
     <p class="">{{posts.date|date:"F d,Y"}}</p>
   </div>
   </div>
+</div>
 </div>
 </div>
 {% endfor %}
