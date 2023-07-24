@@ -1,6 +1,6 @@
 {% extends 'index.html' %}
 {% block body %}
-<div class="c" style="display:flex; align-items:center;justify-content: center; align-items:center; margin: 2.5%;">
+<div class="c" style="display:flex;flex-direction:column ;align-items:center;justify-content: center; align-items:center; margin: 2.5%;">
     <div class="card" style="width: 50rem; display:flex;">
       <div class="card-body" style="display:flex">
         <img class="rounded-circle img-thumbnail" style="height:64px; width:64px"src="{{object.author.profile.image.url}}">
@@ -12,5 +12,13 @@
       </div>
       </div>
     </div>
+    {% if object.author == user %}
+    <div style="display:flex; margin:1%">
+    <button class="btn btn-outline-success"style="align-self: center; margin:3%;" > <a  href="{%url 'post-update' object.id%}">Update</a></button>
+    <button class="btn btn-outline-danger"style="align-self: center;margin:3%"> <a  href="{%url 'post-delete' object.id%}">Delete</a></button>
+    </div>
+    {% endif %}
+    
+    
     </div>
 {% endblock body %}
