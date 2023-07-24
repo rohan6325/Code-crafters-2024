@@ -1,7 +1,28 @@
 {% extends 'index.html' %}
 {% block body %}
 
-<h1>{{user.username}}</h1>
-<img  class="rounded-circle account-img" src="{{user.profile.image.url}}">
+<div class="content-section" style="display: flex; justify-content: center; border: solid; border-width: 1px; width: 60%; border-radius: 10px;">
+    <div class="media" style="height: 50%; display: flex; align-items: center;">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url}}" style="height: 180px; width: 180px; align-self: flex-start;" >
+        <div class="media-body">
+            <h2 class="account-heading">Username :- <span>{{user.username}}</span></h2>
+        </div>
+
+    </div>
+</div>
+<div class="content-section border-1 " style="display: flex; justify-content: center; border: 2px; border-color: black;">
+    <form method="POST" enctype="multipart/form-data" style="border: 1px;border: double; padding: 2px; border-radius: 12px; margin-top: 2%;">
+        {%csrf_token%}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Join today</legend>
+        {{u_form.as_p}}
+        {{p_form.as_p}}
+    </fieldset>
+        <button class="btn btn-outline-info" type="submit" style="align-self: center;">Update</button>
+   <div class="border-top pt-3">
+
+   </div>
+    </form>
+    
 
 {% endblock body %}
