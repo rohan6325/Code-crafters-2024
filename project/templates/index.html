@@ -44,12 +44,13 @@
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
           </div>
-        </div>{% if messages %}
+        </div>
+      </nav>
+      {% if messages %}
         {% for messages in messages %}
         <div class="alert alert-{{messages.tag}}">{{messages}}</div>
         {% endfor %}
         {% endif %}
-      </nav>
       <div class="body-div" style=" display:flex;justify-content: center; justify-self: center; align-items: center; ;">
       {% block body %}
       {% endblock body %}
