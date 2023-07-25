@@ -2,17 +2,15 @@ from django.shortcuts import render
 from django.views.generic import ListView , DetailView , CreateView, UpdateView , DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin , UserPassesTestMixin
 from .models import post
+from django.core.paginator import Paginator
 
-def home (request):
-    context ={
-        'posts':post.objects.all()
-    }
-    return render(request, 'home.html',context)
+
 class PostListView(ListView):
     model = post
     template_name ='home.html'
     context_object_name ='posts'
     ordering = ['-date']
+    paginate_by = 3 
 class PostDetailView(DetailView):
     model = post
     template_name ='post_detail.html'
