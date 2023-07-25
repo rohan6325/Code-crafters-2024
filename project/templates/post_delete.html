@@ -8,7 +8,7 @@ Create Post
     <form method="POST" style="border: 1px;border: double; padding: 2px; border-radius: 12px; margin-top: 2%;">
         {%csrf_token%}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Are you sure you want to Delete your post?{object.title}</legend>
+            <legend class="border-bottom mb-4">Are you sure you want to Delete your post?{{object.title}}</legend>
         {{form.as_p}}
     </fieldset>
         <button class="btn btn-outline-danger" type="submit" style="align-self: center;">Yes,Delete</button>
