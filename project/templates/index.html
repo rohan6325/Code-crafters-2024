@@ -69,9 +69,10 @@
       {% block body %}
       {% endblock body %}
       </div>
+ <div  style="display:flex;justify-content:center;">
       {% if is_paginated %}
       
-        {% if page.obj.has_previous %}
+        {% if page_obj.has_previous %}
         <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
         <a class="btn btn-outline-info mb-4" href="?page={{page_obj.previous_page_number }}">Previous</a>
         
@@ -91,6 +92,6 @@
     <a class="btn btn-outline-info mb-4" href="?page={{page_obj.paginator.num_pages }}">Last</a>
 {% endif %}
 {% endif %}
-
+ </div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <div class="container" style="justify-content: center;">
 <div class="content-section" style="display: flex; justify-content: center; border: solid; border-width: 1px; width: 100%; border-radius: 10px;">
     <div class="media" style="height: 50%; display: flex; align-items: center;">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url}}" style="height: 180px; width: 180px; align-self: flex-start;@media (max-width: 600px) { height:64px;width:64px }" >
+        <img class="rounded-circle img-thumbnail" src="{{ user.profile.image.url}}" style="height: 180px; width: 180px; align-self: flex-start;@media (max-width: 600px) { height:64px;width:64px }" >
         <div class="media-body">
             <h2 class="account-heading" style="margin-left: 3%;"> {{user.username}}</h2>
             <p class="text-muted" style="margin-left: 3%;">{{user.email}}</p>

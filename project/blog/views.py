@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render , get_object_or_404
 from django.views.generic import ListView , DetailView , CreateView, UpdateView , DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin , UserPassesTestMixin
 from .models import post
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 
 
@@ -10,7 +11,18 @@ class PostListView(ListView):
     template_name ='home.html'
     context_object_name ='posts'
     ordering = ['-date']
-    paginate_by = 3 
+    paginate_by = 5 
+    
+class UserPostListView(ListView):
+    model = post
+    template_name ='User_posts.html'
+    context_object_name ='posts'
+    paginate_by = 5
+    def get_query_set(self):
+        user = get_object_or_404(User , username = self.kwargs.get('username'))
+        return  post.object.filter(author=user).order_by('-date')
+         
+    
 class PostDetailView(DetailView):
     model = post
     template_name ='post_detail.html'
@@ -45,4 +57,7 @@ class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
     
 
 def about (request):
+    API_KEY = open("API_KEY").read()
+    current_weather_url="https://weatherapi-com.p.rapidapi.com/current.json"
+    
     return render(request, 'index.html')
