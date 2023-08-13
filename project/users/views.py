@@ -3,6 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UserRegisterForm , UserUpdateForm , ProfileUpdateForm
 from blog.models import post
+import easyocr
+from PIL import Image
+import numpy as np
 # Create your views here.
 def register(request):
     if request.method =='POST':
@@ -17,6 +20,7 @@ def register(request):
     return render(request, 'register.html',{'form':form})
 @login_required
 def profile(request):
+        
     
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST,instance=request.user)
