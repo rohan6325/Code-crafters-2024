@@ -57,7 +57,9 @@ class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
     
 
 def about (request):
-    API_KEY = open("API_KEY").read()
-    current_weather_url="https://weatherapi-com.p.rapidapi.com/current.json"
+    
     
     return render(request, 'index.html')
+
+def landing (request):
+    return render(request, 'landing.html')
