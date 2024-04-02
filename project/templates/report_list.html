@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% block body %}
+
+{% for report in reports %}
+
+<div style="display: flex;flex-direction: column; max-width :80% ;">
+<div class="c" style="display:flex; ;align-items:center;justify-content: center; align-items:center; margin: 2.5%;">
+<div class="card" style="width: 50rem; display:flex;">
+  <div class="card-body" style="display:flex">
+    <img class="rounded-circle img-thumbnail" style="height:64px; width:64px"src="{{report.author.profile.image.url}}">
+    <div style="display: flex; flex-direction: column; margin-left: 2%;">
+    <h5 class="card-title"><a style="text-decoration: none;" href="{%url 'report-update' report.id %}">{{report.type}}</a></h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">By author <a href="{% url 'User-posts' report.author.username%}">{{report.author}}</a></h6>
+    <p class="card-text">{{report.location}}</p>
+    <p class="">{{report.date|date:"F d,Y"}}</p>
+    <p class="card-text" style="color: {% if report.status == 'open' %}red{% else %}green{% endif %};">{{report.status}}</p>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+{% endfor %}
+
+{% endblock body %}

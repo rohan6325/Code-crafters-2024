@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+
+{% block style %}
+<style>
+    footer{
+        margin-top:35vh;
+    }
+    .report-detail {
+        width: 80%;
+        margin: auto;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .report-detail h2 {
+        color: #333;
+    }
+    .report-detail a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+    .report-detail p {
+        color: #666;
+    }
+    .report-detail img {
+        max-width: 100%;
+        height: auto;
+    }
+    footer {
+        margin-top: 35vh;
+    }
+</style>
+{% endblock style %}
+{% block body %}
+<div class="report-detail">
+  <h2>{{ object.type }}</h2>
+  <a href="https://www.google.com/maps/search/{{object.location}}/">{{ object.location }}</a>
+  <p>{{ object.status }}</p>
+  {% if object.photo %}
+    <img src="{{ object.photo.url }}" alt="{{ object.type }}">
+  {% endif %}
+</div>
+{% endblock %}

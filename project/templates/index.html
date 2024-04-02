@@ -312,13 +312,13 @@ footer {
                     +Add post</a>
                     </li>
                     
-                  <li><a href="{%url 'post-create'%}">
+                  <li><a href="{%url 'pickup-create'%}">
                       +Request Pick up</a>
                   </li>
-                  <li><a href="{%url 'post-create'%}">
+                  <li><a href="{%url 'report-create'%}">
                        ! Report trash</a>
                   </li>
-                <li><a href="#">
+                <li><a href="http://localhost:8501/">
                   Chat Bot</a>
                   </li>
           </ul>
@@ -363,5 +363,7 @@ footer {
 <footer>
   <p>© Team GGWP. All Rights Reserved.</p>
 </footer>
+{% block script %}
+{% endblock script %}
 </body>
 </html>

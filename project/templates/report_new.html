@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+{% block style %}
+<style>
+    footer{
+        margin-top:35vh;
+    }
+</style>
+{% endblock style %}
+{% block title %}
+Create Post
+{% endblock title %}
+{% block body %}
+<div class="content-section border-1 " style="display: flex; justify-content: center; border: 2px; border-color: black;">
+    <form method="POST" style="border: 1px;border: double; padding: 2px; border-radius: 12px; margin-top: 2%;">
+        {%csrf_token%}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Create a new Post</legend>
+        {{form.as_p}}
+        <input type="hidden" id="id_latitude" name="latitude">
+        <input type="hidden" id="id_longitude" name="longitude">
+        <button type="submit">Submit</button>
+      </form>
+</div>
+{% endblock body %}
+{% block script %}
+<script>
+    var form = document.querySelector('form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        navigator.geolocation.getCurrentPosition(function(position) {
+            document.getElementById('id_latitude').value = position.coords.latitude;
+            document.getElementById('id_longitude').value = position.coords.longitude;
+            form.submit();
+        });
+    });
+</script>
+{% endblock  %}
