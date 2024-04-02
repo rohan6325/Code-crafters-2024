@@ -10,12 +10,25 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.views.generic.edit import CreateView
 from .models import report
 from .models import Pickup
+from django.urls import reverse_lazy
+from django.views.generic import ListView
+
+
 
 class PickupCreateView(CreateView):
     model = Pickup
     fields = ['address', 'street_name', 'city', 'time_slot', 'date_of_pickup', 'status', 'type']
     template_name = 'pickup_create.html'
-    
+
+class PickupListView(UserPassesTestMixin, ListView):
+    model = Pickup
+    template_name = 'pickup_list.html'
+    context_object_name = 'pickups'
+    ordering = ['-date_of_pickup']
+    login_url = reverse_lazy('login')  # or another URL if you want
+
+    def test_func(self):
+        return self.request.user.is_staff  # or another condition if you want   
 class ReportCreateView(LoginRequiredMixin,CreateView):
     model = report
     fields = ['location', 'type', 'status', 'photo']  # include 'photo' field
@@ -103,3 +116,16 @@ def about (request):
 
 def landing (request):
     return render(request, 'landing.html')
+
+class DashboardView(UserPassesTestMixin, ListView):
+    template_name = 'dashboard.html'
+    context_object_name = 'dashboard_data'
+    login_url = reverse_lazy('login')
+
+    def get_queryset(self):
+        pending_pickups_count = Pickup.objects.filter(status='pending').count()
+        open_reports_count = report.objects.filter(status='open').count()
+        return {'pending_pickups_count': pending_pickups_count, 'open_reports_count': open_reports_count}
+
+    def test_func(self):
+        return self.request.user.is_staff

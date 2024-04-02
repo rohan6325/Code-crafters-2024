@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% block body %}
+
+<form method="POST">
+    {% csrf_token %}
+    <div style="display: flex;flex-direction: column; max-width :80% ;">
+        <div class="c" style="display:flex; ;align-items:center;justify-content: center; align-items:center; margin: 2.5%;">
+            <div class="card" style="width: 50rem; display:flex;">
+                <div class="card-body" style="display:flex">
+                    <div style="display: flex; flex-direction: column; margin-left: 2%;">
+                        <h5 class="card-title">Create Pickup</h5>
+                        <fieldset class="form-group">
+                            {{ form.as_p }}
+                        </fieldset>
+                        <button type="submit">Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock body %}

@@ -284,9 +284,15 @@ footer {
     
     <header>
       <nav>
-          <div class="logo">
-            ECO SORT
-            </div>
+		{% if request.user.is_staff %}
+		<a class="logo" href="{% url 'dashboard' %}" style="text-decoration:none;">
+			ECO SORT
+		</a>
+	{% else %}
+		<div class="logo">
+			ECO SORT
+		</div>
+	{% endif %}
           <ul class="nav-links">
               <li><a href="{%url 'landing'%}">
                 Home</a>
@@ -360,7 +366,7 @@ footer {
 {% endif %}
  </div>
 </div>
-<footer>
+<footer style="display : flex ; flex-direction:column;">
   <p>© Team GGWP. All Rights Reserved.</p>
 </footer>
 {% block script %}
